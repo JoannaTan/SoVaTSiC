@@ -17,12 +17,15 @@ The pipeline takes in variant calls from GATK.
 
 ## Perform quality control of single cells data
 
-After processing the bam files for each single cell, 
+After processing the bam files for each single cell, we identify variants using GATK haplotypecaller. 
 
-Step 1: We called variants individually for each single cell using haplotypecaller to get a gVCF per cell.
-java -jar GenomeAnalysisTK.jar -R ReferenceGenomeFile -T HaplotypeCaller \-I Singlecell_1.bam \-mbq 20 \-mmq 40 \-L targetinterval.bed --emitRefConfidence GVCF --dbsnp ${dbsnp_file} -o singlecell_1.g.vcf
+Step 1: Call variants individually for each single cell using haplotypecaller to get a gVCF per cell.
+java -jar GenomeAnalysisTK.jar -R ReferenceGenomeFile -T HaplotypeCaller -I Singlecell_1.bam -mbq 20 -mmq 40 -L targetinterval.bed --emitRefConfidence GVCF --dbsnp dbsnp_138.b37.vcf -o singlecell_1.g.vcf
 
+Step 2: Perform jointgenotyping using the gvcfs obtained from all cells
+java -jar GenomeAnalysisTK.jar -R ReferenceGenomeFile -T GenotypeGVCFs --variant singlecell_1.g.vcf --variant singlecell_2.g.vcf --variant singlecell_3.g.vcf --dbsnp dbsnp_138.b37.vcf -o ALL_singlecells_jointgenotype.vcf
 
+Step 3: Perform GATK variant recalibration for 
 
 
 
