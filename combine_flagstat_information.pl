@@ -56,6 +56,7 @@ while(my $sam=<$rf>)
 close($rf);
 close($w);
 
+### FUNCTIONS ###
 sub read_depth
 {
 	my ($dfile, $sam) = @_;
