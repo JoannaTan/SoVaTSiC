@@ -4,9 +4,11 @@ A pipeline to perform quality evaluation and identify somatic variants for singl
 
 The pipeline is written in Perl and R.
 
-## R packages required
-1. Mixtools
-2. MASS
+## R packages and software required
+1. Mixtools (R package)
+2. MASS (R package)
+3. Samtools
+4. GATK
 
 ## The pipeline consist of three parts:
 1) Quality control of single cells data
@@ -52,12 +54,27 @@ java -jar GenomeAnalysisTK.jar -T VariantsToTable -R ReferenceGenomeFile -V inpu
 
 ## To perform quality control of single cell data
 
-**Files required**
+**Input files required**
 1. Config file. An example config file is given. 
 2. Flagstat file. This file consist of the mapping statistics, percentage of genome covered information and read depth information which can be obtained from GATK DepthofCoverage Tool.
 
+To get the mapping statistics, run **samtools flagstat**
+samtools flagstat singlecell_1.bam >> singlecell_1.flagstat
 
- 
+To get the percentage of genome covered and read depth information, run **GATK DEPTHofCoverage**
+java -jar GenomeAnalysisTK.jar -R ReferenceGenomeFile -T DepthOfCoverage -o singlecell_1_depthofcoveage.afterrecal -I singlecell_1.bam -L targetinterval.bed -mmq 20
+
+For our experiments, we used reads with mapping quality >= 20.
+
+
+
+
+
+
+
+
+
+
  
 
 
