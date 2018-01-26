@@ -59,7 +59,7 @@ java -jar GenomeAnalysisTK.jar -T VariantsToTable -R ReferenceGenomeFile -V inpu
 
 2. Flagstat file. This file consist of the mapping statistics, percentage of genome covered information and read depth information which can be obtained from GATK DepthofCoverage Tool.
 
-**To generate the flagstat file**
+*To generate the flagstat file*
 
 To get the mapping statistics, run **samtools flagstat**
 
@@ -82,6 +82,8 @@ Lastly, run the command below
 perl combine_flagstat_information.pl --inputfile.txt --o outfile.txt
 
 This will give you the flagstat file that will be taken in by the pipeline.
+
+3. 
 
 
 
