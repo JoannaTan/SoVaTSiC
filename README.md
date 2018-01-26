@@ -19,13 +19,28 @@ The pipeline takes in variant calls from GATK.
 
 After processing the bam files for each single cell, we identify variants using GATK haplotypecaller. 
 
-Step 1: Call variants individually for each single cell using haplotypecaller to get a gVCF per cell.
+**Step 1: Call variants individually for each single cell using haplotypecaller to get a gVCF per cell.**
 java -jar GenomeAnalysisTK.jar -R ReferenceGenomeFile -T HaplotypeCaller -I Singlecell_1.bam -mbq 20 -mmq 40 -L targetinterval.bed --emitRefConfidence GVCF --dbsnp dbsnp_138.b37.vcf -o singlecell_1.g.vcf
 
-Step 2: Perform jointgenotyping using the gvcfs obtained from all cells
+**Step 2: Perform jointgenotyping using the gvcfs obtained from all cells**
 java -jar GenomeAnalysisTK.jar -R ReferenceGenomeFile -T GenotypeGVCFs --variant singlecell_1.g.vcf --variant singlecell_2.g.vcf --variant singlecell_3.g.vcf --dbsnp dbsnp_138.b37.vcf -o ALL_singlecells_jointgenotype.vcf
 
-Step 3: Perform GATK variant recalibration for 
+**Step 3: Perform GATK variant recalibration**
+Refer to https://gatkforums.broadinstitute.org/gatk/discussion/2805/howto-recalibrate-variant-quality-scores-run-vqsr
+or https://software.broadinstitute.org/gatk/documentation/article.php?id=1259
+
+For SNVs, the annotations used for recalibration training include:
+  1. variant quality score by read depth (QD) 
+  2. strand bias (FS)
+  3. mapping quality rank sum score (MQRankSum) 
+  4. read position rank sum score (ReadPosRankSum)
+  5. mapping quality (MQ)
+   
+For INDELS, the annotations used for recalibration training include: 
+  1. variant quality score by read depth (QD)
+  2. strand bias (FS)
+  3. mapping quality rank sum score (MQRankSum)
+  4. read position rank sum score (ReadPosRankSum) 
 
 
 
