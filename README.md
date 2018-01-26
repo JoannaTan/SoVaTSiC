@@ -45,17 +45,8 @@ For INDELS, the annotations used for recalibration training include:
   3. mapping quality rank sum score (MQRankSum)
   4. read position rank sum score (ReadPosRankSum) 
 
-
-
-
-
-
-
-
-
-
 To convert your VCFs to the required input file format, use GATK VariantsToTable function. 
-We have tested the below command using GATK v3.5 and v3.7
+We have tested the command below using GATK v3.5 and v3.7
 
 java -jar GenomeAnalysisTK.jar -T VariantsToTable -R ReferenceGenomeFile -V input.vcf -F CHROM -F POS -F ID -F REF -F ALT -F QUAL -F AC -F FILTER -F VQSLOD -F EVENTLENGTH -F TRANSITION -F HET -F HOM-REF -F HOM-VAR -F NO-CALL -F TYPE -F NCALLED -F MQ -F GQ_MEAN -F GQ_STDDEV -F QD -F HWP -F NEGATIVE_TRAIN_SITE -F POSITIVE_TRAIN_SITE -GF GT -GF AD -GF DP -GF GQ -GF PL --allowMissingData -o output.table
 
