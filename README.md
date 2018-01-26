@@ -15,7 +15,7 @@ The pipeline is written in Perl and R.
 
 The pipeline takes in variant calls from GATK.
 
-## Perform quality control of single cells data
+## To generate the input files
 
 After processing the bam files for each single cell, we identify variants using GATK haplotypecaller. 
 
@@ -50,5 +50,5 @@ We have tested the command below using GATK v3.5 and v3.7
 
 java -jar GenomeAnalysisTK.jar -T VariantsToTable -R ReferenceGenomeFile -V input.vcf -F CHROM -F POS -F ID -F REF -F ALT -F QUAL -F AC -F FILTER -F VQSLOD -F EVENTLENGTH -F TRANSITION -F HET -F HOM-REF -F HOM-VAR -F NO-CALL -F TYPE -F NCALLED -F MQ -F GQ_MEAN -F GQ_STDDEV -F QD -F HWP -F NEGATIVE_TRAIN_SITE -F POSITIVE_TRAIN_SITE -GF GT -GF AD -GF DP -GF GQ -GF PL --allowMissingData -o output.table
 
-
+## To perform quality control of single cell data
 
