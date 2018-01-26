@@ -55,16 +55,35 @@ java -jar GenomeAnalysisTK.jar -T VariantsToTable -R ReferenceGenomeFile -V inpu
 ## To perform quality control of single cell data
 
 **Input files required**
-1. Config file. An example config file is given. 
+1. Config file. An example config file (exampleQC.config) is given. 
+
 2. Flagstat file. This file consist of the mapping statistics, percentage of genome covered information and read depth information which can be obtained from GATK DepthofCoverage Tool.
 
+**To generate the flagstat file**
+
 To get the mapping statistics, run **samtools flagstat**
+
 samtools flagstat singlecell_1.bam >> singlecell_1.flagstat
 
 To get the percentage of genome covered and read depth information, run **GATK DEPTHofCoverage**
+
 java -jar GenomeAnalysisTK.jar -R ReferenceGenomeFile -T DepthOfCoverage -o singlecell_1_depthofcoveage.afterrecal -I singlecell_1.bam -L targetinterval.bed -mmq 20
 
 For our experiments, we used reads with mapping quality >= 20.
+
+To combine the flagstat information, read depth and the percentage of genome covered information, a perl script is provided.
+
+Before you run the perl script, make sure you prepare a **tab-delimited** file containing 
+SampleName(tab)path_to_flagstat_file(tab)path_to_sample_cumulative_coverage_proportions_file(tab)path_to_sample_summary_file
+
+One line per cell
+
+Lastly, run the command below
+perl combine_flagstat_information.pl --inputfile.txt --o outfile.txt
+
+This will give you the flagstat file that will be taken in by the pipeline.
+
+
 
 
 
