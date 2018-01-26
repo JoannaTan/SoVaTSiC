@@ -52,3 +52,13 @@ java -jar GenomeAnalysisTK.jar -T VariantsToTable -R ReferenceGenomeFile -V inpu
 
 ## To perform quality control of single cell data
 
+**Files required**
+1. Config file. An example config file is given. 
+2. Flagstat file. This file consist of the mapping statistics, percentage of genome covered information and read depth information which can be obtained from GATK DepthofCoverage Tool.
+
+
+ 
+ 
+
+
+
