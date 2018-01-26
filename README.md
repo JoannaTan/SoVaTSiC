@@ -4,18 +4,18 @@ A pipeline to perform quality evaluation and identify somatic variants for singl
 
 The pipeline is written in Perl and R.
 
-##R packages required
+## R packages required
 1. Mixtools
 2. MASS
 
-##The pipeline consist of three parts:
+## The pipeline consist of three parts:
 1) Quality control of single cells data
 2) Identification of threshold for filtering of low quality genotypes
 3) Identification of somatic variants from single cell data
 
 The pipeline takes in variant calls from GATK.
 
-###STEP 1: Perform quality control of single cells data
+### STEP 1: Perform quality control of single cells data
 
 
 
