@@ -52,7 +52,7 @@ We have tested the command below using GATK v3.5 and v3.7
 
 java -jar GenomeAnalysisTK.jar -T VariantsToTable -R ReferenceGenomeFile -V input.vcf -F CHROM -F POS -F ID -F REF -F ALT -F QUAL -F AC -F FILTER -F VQSLOD -F EVENTLENGTH -F TRANSITION -F HET -F HOM-REF -F HOM-VAR -F NO-CALL -F TYPE -F NCALLED -F MQ -F GQ_MEAN -F GQ_STDDEV -F QD -F HWP -F NEGATIVE_TRAIN_SITE -F POSITIVE_TRAIN_SITE -GF GT -GF AD -GF DP -GF GQ -GF PL --allowMissingData -o output.table
 
-## To perform quality control of single cell data
+## PART 1: To perform quality control of single cell data
 
 **Input files required**
 1. Config file. An example config file (exampleQC.config) is given. 
@@ -83,7 +83,15 @@ perl combine_flagstat_information.pl --inputfile.txt --o outfile.txt
 
 This will give you the flagstat file that will be taken in by the pipeline.
 
-3. 
+3. BULK VCF files
+
+We call variants in the bulk Bam file using GATK haplotypecaller.
+
+java -jar GenomeAnalysisTK.jar -R ReferenceGenomeFile -T HaplotypeCaller -I bulk_normal.bam -L targetinterval.bed --dbsnp dbsnp_138.b37.vcf --genotyping_mode DISCOVERY -stand_emit_conf 10 -stand_call_conf 30 -o bulk_normal_variants.vcf
+
+We follow the recommedations of GATK (https://gatkforums.broadinstitute.org/gatk/discussion/2803/howto-call-variants-with-haplotypecaller)
+
+**Repeat the same for the bulk tumour files.**
 
 
 
