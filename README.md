@@ -15,7 +15,14 @@ The pipeline is written in Perl and R.
 
 The pipeline takes in variant calls from GATK.
 
-### STEP 1: Perform quality control of single cells data
+## Perform quality control of single cells data
+
+After processing the bam files for each single cell, 
+
+Step 1: We called variants individually for each single cell using haplotypecaller to get a gVCF per cell.
+java -jar GenomeAnalysisTK.jar -R ReferenceGenomeFile -T HaplotypeCaller \-I Singlecell_1.bam \-mbq 20 \-mmq 40 \-L targetinterval.bed --emitRefConfidence GVCF --dbsnp ${dbsnp_file} -o singlecell_1.g.vcf
+
+
 
 
 
