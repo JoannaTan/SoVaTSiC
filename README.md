@@ -10,10 +10,13 @@ The pipeline is written in Perl and R.
 3. Samtools
 4. GATK
 
-## The pipeline consist of three parts:
+## Overview of the pipeline
+
+The pipeline consist of three parts:
 1) Quality control of single cells data
 2) Identification of threshold for filtering of low quality genotypes
 3) Identification of somatic variants from single cell data
+
 
 ## Running GATK to generate the input files required by the pipeline
 
