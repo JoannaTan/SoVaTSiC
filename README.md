@@ -15,9 +15,9 @@ The pipeline is written in Perl and R.
 2) Identification of threshold for filtering of low quality genotypes
 3) Identification of somatic variants from single cell data
 
-The pipeline takes in variant calls from GATK.
+## Running GATK to generate the input files required by the pipeline
 
-## To generate the input files from GATK
+The pipeline takes in variant calls from GATK.
 
 After processing the bam files for each single cell, we identify variants using GATK haplotypecaller. 
 
