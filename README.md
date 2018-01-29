@@ -54,10 +54,7 @@ java -jar GenomeAnalysisTK.jar -T VariantsToTable -R ReferenceGenomeFile -V inpu
 
 ## PART 1: To perform quality control of single cell data
 
-**Input files required**
-1. Config file. An example config file (exampleQC.config) is given. 
-
-2. Flagstat file. This file consist of the mapping statistics, percentage of genome covered information and read depth information which can be obtained from GATK DepthofCoverage Tool.
+Step 1. Generate the flagstat file. This file consist of the mapping statistics, percentage of genome covered information and read depth information which can be obtained from GATK DepthofCoverage Tool.
 
 *To generate the flagstat file*
 
@@ -76,22 +73,50 @@ To combine the flagstat information, read depth and the percentage of genome cov
 Before you run the perl script, make sure you prepare a **tab-delimited** file containing 
 SampleName(tab)path_to_flagstat_file(tab)path_to_sample_cumulative_coverage_proportions_file(tab)path_to_sample_summary_file
 
-One line per cell
+One line per cell.
 
 Lastly, run the command below
 perl combine_flagstat_information.pl --inputfile.txt --o outfile.txt
 
 This will give you the flagstat file that will be taken in by the pipeline.
 
-3. BULK VCF files
+Step 2. Identify variants from BULK sequencing files using GATK haplotypecaller
 
-We call variants in the bulk Bam file using GATK haplotypecaller.
+This step will identify SNVs and INDELs from BULK sequencing and generate VCF files which will be used by the pipeline.
+
+The Bulk VCF files will be used to determine
+1) The heterozygous sites for ADO and FN calculation
+2) The true positive and false positive sites for identification of threshold for filtering low quality genotypes.
+
+To get the variants, run
 
 java -jar GenomeAnalysisTK.jar -R ReferenceGenomeFile -T HaplotypeCaller -I bulk_normal.bam -L targetinterval.bed --dbsnp dbsnp_138.b37.vcf --genotyping_mode DISCOVERY -stand_emit_conf 10 -stand_call_conf 30 -o bulk_normal_variants.vcf
 
 We follow the recommedations of GATK (https://gatkforums.broadinstitute.org/gatk/discussion/2803/howto-call-variants-with-haplotypecaller)
 
 **Repeat the same for the bulk tumour files.**
+
+For the filtering of variant sites, we used the hard filters recommended by GATK
+(https://gatkforums.broadinstitute.org/gatk/discussion/2806/howto-apply-hard-filters-to-a-call-set).
+
+In addition, we removed variants in the bulk tumour or normal if they have GQ (Genotype Quality) < 30 and DP (Read Depth) < 8.
+This step is optional. We have tested using variants with and without removing variants with low GQ and DP, and the results were the same.
+
+3. A **tab-delimited** file containing all the names of the cells, the type of cell, and information if it is a single cell or bulk.
+
+4. A config file that contain information of where all the files are. An example config file (cellqc_config.txt) is given.
+The information required include
+- Path to the bulk vcf files. VCF from each bulk should be separated by a comma (,). 
+- Path to the single cell file generated after running GATK VariantsToTable
+- Path to the file containing the samplenames information
+- Path to the flagstat file 
+- Name of the output file
+- Read depth to filter (We used sites that were covered by at least 5 reads for the calculation of ADO and FN in single cells)
+- Genotype quality to filter 
+- Variant allele frequency to filter 
+
+5. To run the single cell QC pipeline, simply type
+perl  singlecellpipeline.pl --Config cellqc_config.txt --Analysistype CellQC
 
 
 
