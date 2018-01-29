@@ -17,7 +17,7 @@ The pipeline is written in Perl and R.
 
 The pipeline takes in variant calls from GATK.
 
-## To generate the input files
+## To generate the input files from GATK
 
 After processing the bam files for each single cell, we identify variants using GATK haplotypecaller. 
 
