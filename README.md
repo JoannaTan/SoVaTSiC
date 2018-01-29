@@ -10,7 +10,7 @@ The pipeline is written in Perl and R.
 3. Samtools
 4. GATK
 
-For more information on how to run SoVatSC and 
+For more information on how to run SoVatSC, please refer to https://github.com/JoannaTan/SoVatSC/wiki
 
 
 
