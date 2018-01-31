@@ -27,13 +27,13 @@ FPdensity <- kde2d(FP$DP, FP$GQ, n = c(20, 5), lims = c(0, 200, 0, 99))
 res <- list(x = TPdensity$x, y = TPdensity$y, z = TPdensity$z - FPdensity$z)
 
 # plot the contour 
-postscript(paste(prefix,"contour_plot_of_differences_TP_and_FP.ps",sep="")) 
+postscript(paste(prefix,"_contour_plot_of_differences_TP_and_FP.ps",sep="")) 
 filled.contour(res, main = "Contour plot for differences in density\nbetween TP and FP", xlab = "DP", ylab = "GQ", col = rainbow(25)) 
 dev.off()  
 
 #plot the density plot
 
-postscript(paste(prefix,"density_plot_of_differences_TP_and_FP.ps",sep=""))
+postscript(paste(prefix,"_density_plot_of_differences_TP_and_FP.ps",sep=""))
 plot(density(TP$VAF), main = "Distribution of variant allele frequency", xlab = "Variant Allele Frequency (VAF)", lwd = 2)  
 
 # plot the density distribution of VAF for FP
