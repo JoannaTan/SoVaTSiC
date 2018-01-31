@@ -1,0 +1,9 @@
+This folder contains supplementary files that are related to the GenotypeQC pipeline.
+
+For more information on how to run the GenotypeQC step:
+
+Refer to https://github.com/JoannaTan/SoVatSC/wiki/4.-Genotype-QC
+
+Files in this folder:
+* R script to plot the contour plot of GQ against DP and the density curve for TP and FP sites
+* Example config file
