@@ -1,0 +1,8 @@
+Type	SNP
+variantfiles	BULK_NORMAL.filterbadSNVs.vcf,BULK_TUT1.filterbadSNVs.vcf,BULK_TUT2.filterbadSNVs.vcf
+depthfiles	BULK_NORMAL.coverage_min8x,BULK_TUT1.coverage_min8x,BULK_TUT2.coverage_min8x
+SingleCell	final_singlecells_mq40_bq20_GATKver35_recalibrated_snps_indels_filter99.9percent.table
+Potentialsites	BULK_NORMAL.raw_snps_only.vcf,BULK_TUT1.raw_snps.vcf,BULK_TUT2.raw_snps.vcf
+Samplenames	final_single_cells_after_removing_bad_cells.txt
+threshold	8
+Prefix	After_genotype_QC_
