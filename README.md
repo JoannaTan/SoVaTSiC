@@ -12,6 +12,14 @@ The pipeline is written in Perl and R.
 
 For more information on how to run SoVatSC, please refer to https://github.com/JoannaTan/SoVatSC/wiki
 
+To run SoVatSC
+
+perl singlecellpipeline.pl --Config configfile.txt --Analysistype Analysis
+
+There are three type of analysis that can be run:
+1. CellQC (to look for low quality cells)
+2. GenotypeQC (to look for thresholds across multiple variant quality parameters)
+3. filtergenotypes (remove low quality genotypes and filter germline mutations)
 
 
 
