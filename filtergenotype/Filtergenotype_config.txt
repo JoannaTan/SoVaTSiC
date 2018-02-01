@@ -1,0 +1,12 @@
+GQ	30
+DP	5
+VAF	0.15
+Type	SNP
+SingleCellFile	After_genotype_QC_2018-01-31_remove_clusters_triallelic_singletons_SNP.txt
+BulkNormalBAM	BULK_NORMAL.merge.markdup.realigned.bam
+BulkNormalVar	BULK_NORMAL.filterbadSNVs.vcf
+TUT_pattern	TUT
+NOR_pattern	NOR
+outprefix	filter_genotype
+refgenome	human_g1k_v37.fa
+tableoriginal	All_singlecells_mq40_bq20_GATKver35_recalibrated_snps_indels.table
