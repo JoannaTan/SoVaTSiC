@@ -12,7 +12,7 @@ The pipeline is written in Perl and R.
 
 For more information on how to run SoVatSC, please refer to https://github.com/JoannaTan/SoVatSC/wiki
 
-To run SoVatSC
+To run SoVaTSiC
 
 perl singlecellpipeline.pl --Config configfile.txt --Analysistype Analysis
 
