@@ -17,7 +17,7 @@ foreach my $file (@bulkarray)
 {
 	print "$file\n";
 	open(my $rn, "<", $file) or die "Cannot open $file\n";
-	while(my $ln = <$rn>)
+	LINE11:while(my $ln = <$rn>)
 	{
 		chomp($ln);
 		if($ln !~ /#/)
@@ -51,7 +51,11 @@ foreach my $file (@bulkarray)
 					}
 					$hash{$nkey}{$file} = $ninfo;
 				}
-			}	
+			}
+			else
+			{
+				next LINE11;
+			}
 		}
 	}
 	close($rn);
