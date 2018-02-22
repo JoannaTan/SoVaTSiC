@@ -37,7 +37,7 @@ foreach my $file (@bulkarray)
 		#	print "$ninfo\t$nrefcount\t$naltcount\n";
 			if($ngt eq "0/1" && $nrefcount >= 3 && $naltcount >= 3 && $nvaf >= 0.2 && $ndp >= 8 && $ngq >= 30 && $nfilter eq "PASS")
 			{
-				my $nkey = $nchr."_".$npos."_".$nref."_".$nalt;
+				my $nkey = $nchr."_".$npos."_".$nref."_".$nalt."_".$ngt;
 				if(exists $hash{$nkey})
 				{
 					$hash{$nkey}{$file} = $ninfo;
@@ -77,7 +77,7 @@ LINE1:foreach my $k (sort keys %hash)
 
 foreach my $k1 (sort keys %hash)
 {
-	my ($c, $p, $r, $a) = split(/_/, $k1);
+	my ($c, $p, $r, $a, $gtype) = split(/_/, $k1);
 	
 	my @array_v = (); #flush contents
 	my $counter = 0;
