@@ -66,7 +66,7 @@ LINE1:foreach my $k (sort keys %hash)
 {
 	if($j==0)
 	{
-		print $w "Chr\tPos\tRef\tAlt";
+		print $w "Chr\tPos\tRef\tAlt\tGeno";
 		foreach my $s (sort keys %{$hash{$k}})
 		{
 			print $w "\t$s";
