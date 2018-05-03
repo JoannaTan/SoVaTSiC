@@ -31,7 +31,8 @@ while(my $line = <$readp>)
 		my $alt_fq = $a[13];
 		my $key = $chr.":".$pos;
 		#print "$ref_count\t$ins_count\t$del_count\t$alt_count\n";
-		if($ins_fq < 0.01 && $del_fq <0.01 && $alt_fq <0.01 && $ref_count > 0)
+		my $total_alts_del_ins = ($ins_fq + $del_fq + $alt_fq);
+		if($total_alts_del_ins <0.01 && $ref_count > 0)
 		{
 			if(exists $var_in_normal_hash{$key})
 			{
