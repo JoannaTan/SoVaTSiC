@@ -53,7 +53,8 @@ sub process_deletion
 		my $length = $1;
 		my $r = substr($j,length($1)+1,$length);
 		my $pattern = $1.$r;
-		$str =~ s/-$pattern/D/g;
+		$str =~ s/.-$pattern/D/g;
+		$str =~ s/,-$pattern/D/g;
 		print "DEL:$str\n";
 	}
 	return($str);
@@ -71,7 +72,8 @@ sub process_insertion
 		print "$length\n";
 		my $r = substr($j,length($1)+1,$length);
 		my $pattern = $1.$r;
-		$str =~ s/\+$pattern/I/g;
+		$str =~ s/.\+$pattern/I/g;
+		$str =~ s/,\+$pattern/I/g;
 		print "INS:$str\n";
 	}
 	return($str);
