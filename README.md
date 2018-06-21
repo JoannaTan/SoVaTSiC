@@ -10,13 +10,16 @@ The framework consist codes written in Perl and R.
 3. Samtools
 4. GATK
 
+## How to run
 For more information on how to run SoVatSC, please refer to https://github.com/JoannaTan/SoVaTSiC/wiki
 
 To run SoVaTSiC
 
 perl singlecellpipeline.pl --Config configfile.txt --Analysistype Analysis
 
+## Type of analysis available
 There are three type of analysis that can be run:
+
 1. CellQC 
 The following is done when this function is chosen:
 - Calculate ADO and FN rate to be used for identification of low quality cells
