@@ -21,11 +21,13 @@ perl singlecellpipeline.pl --Config configfile.txt --Analysistype Analysis
 There are three type of analysis that can be run:
 
 1. CellQC 
+
 The following is done when this function is chosen:
 - Calculate ADO and FN rate to be used for identification of low quality cells
 - Combine user input percentage of genome covered with the ADO and FN rate to give a consolidated file containing all information
 
 2. GenotypeQC
+
 The following is done when the GenotypeQC function is chosen:
 - Remove variants sites within 10bp of each other
 - Remove variant sites whereby variant is only seen in 1 cell
@@ -33,6 +35,7 @@ The following is done when the GenotypeQC function is chosen:
 - Identify the true positive and false positive set so that users can determine the thresholds across multiple variant quality parameters
 
 3. filtergenotypes 
+
 The following is done when this function is chosen:
 - remove low quality genotypes based on user defined threshold
 - remove germline mutations based on SoVaTSiC's germliner filters
