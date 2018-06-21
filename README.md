@@ -24,7 +24,12 @@ There are three type of analysis that can be run:
 
 The following is done when this function is chosen:
 - Calculate ADO and FN rate to be used for identification of low quality cells
-- Combine user input percentage of genome covered with the ADO and FN rate to give a consolidated file containing all information
+- Combine user input percentage of genome covered with the ADO and FN rate calculated to give a consolidated file containing all information
+
+After obtaining the final output, we provide an R script that can help users to identify low quality cells.
+
+Refer to https://github.com/JoannaTan/SoVaTSiC/wiki/3.-Cell-QC
+
 
 2. GenotypeQC
 
@@ -34,13 +39,17 @@ The following is done when the GenotypeQC function is chosen:
 - Remove triallelic sites (sites with more than 1 alternative alleles)
 - Identify the true positive and false positive set so that users can determine the thresholds across multiple variant quality parameters
 
+After obtaining the true positive and false positive set, users can use the Rscript provided to plot the diagnostic plots to determine threshold.
+
+Refer to https://github.com/JoannaTan/SoVaTSiC/wiki/4.-Genotype-QC for a step-by-step guide on how to perform this part.
+
 3. filtergenotypes 
 
 The following is done when this function is chosen:
 - remove low quality genotypes based on user defined threshold
 - remove germline mutations based on SoVaTSiC's germliner filters
 
-
+Refer to https://github.com/JoannaTan/SoVaTSiC/wiki/5.-Identifying-Somatic-Variations for guide
 
 
 
