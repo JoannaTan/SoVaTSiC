@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript-3.2.3
 
-# use the mixtools package from R (We use R-3.2.3)
+# use the mixtools package from R (We use R-3.2.3, mixtools version 1.0.4)
 library(mixtools)  
 
 #read user input
@@ -8,6 +8,13 @@ args <- commandArgs(TRUE)
 combine = args[1]
 prefix = args[2]
 
+#better to set seed updated here on 20181012
+# previously, i did not set seed because i follow the example in 
+# https://www.r-bloggers.com/fitting-mixture-distributions-with-the-r-package-mixtools/
+# checked lung dataset, with and without seed, the results are the same
+# checked eso 1 dataset, with and without seed, the results are the same (3 component)
+# checked bladder dataset, with and without seed, the results are the same
+set.seed(1000)
 
 # Change the input file name to your own file name
 Table <-read.table(combine, header=TRUE, sep="\t", row.names=1)
