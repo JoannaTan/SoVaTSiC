@@ -1,4 +1,4 @@
-#!/mnt/software/bin/R
+#!/mnt/software/bin/Rscript
 
 
 #This script takes in the gatk jointgenotyping data and identify nucleotide positions that pass quality control for each cell/sample.
